@@ -12,11 +12,32 @@
   "activationEvents": [
     "onCommand:vstodo.helloWorld",
     "onCommand:vstodo.AskQuestion",
-    "onCommand:vstodo.Refresh"
+    "onCommand:vstodo.Refresh",
+    "onView:vstodo-sidebar"
 
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vstodo-sidebar-view",
+          "title": "VsTodo",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "vstodo-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "vstodo-sidebar",
+          "name": "VsTodo",
+          "icon": "media/icon.svg",
+          "contextualTitle": "VsTodo"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "vstodo.helloWorld",
