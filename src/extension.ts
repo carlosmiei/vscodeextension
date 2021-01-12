@@ -35,6 +35,18 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		})
 	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand("vstodo.Refresh", async ()=> {
+			HelloWorld.kill();
+			HelloWorld.createOrShow(context.extensionUri);
+			
+			setTimeout(()=>{
+				vscode.commands.executeCommand("workbench.action.webview.openDeveloperTools");
+			}, 500);
+			}
+		)
+	);
 }
 
 // this method is called when your extension is deactivated

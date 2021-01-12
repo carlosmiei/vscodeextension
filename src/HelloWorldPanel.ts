@@ -38,6 +38,8 @@ export class HelloWorld {
         localResourceRoots: [
           vscode.Uri.joinPath(extensionUri, "media"),
           vscode.Uri.joinPath(extensionUri, "src"),
+          vscode.Uri.joinPath(extensionUri, "out/compiled"),
+
         ],
       }
     );
@@ -125,7 +127,7 @@ export class HelloWorld {
   private _getHtmlForWebview(webview: vscode.Webview) {
     // // And the uri we use to load this script in the webview
         const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "src" ,"main.js")
+      vscode.Uri.joinPath(this._extensionUri, "out/compiled" ,"HelloWorld.js")
     );
 
 
@@ -167,10 +169,6 @@ export class HelloWorld {
         </script>
 			</head>
             <body>
-                <h1> Hello World </h1>
-                <input/>
-                "${scriptUri}"
-                <button>TEST</button>
                 <script src="${scriptUri}" nonce="${nonce}">
 			</body>
 			</html>`;
