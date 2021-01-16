@@ -47,9 +47,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand("vstodo.Refresh", async ()=> {
-			HelloWorld.kill();
-			HelloWorld.createOrShow(context.extensionUri);
+			await vscode.commands.executeCommand("workbench.action.closeSidebar");
+			await vscode.commands.executeCommand("workbench.view.extension.vstodo-sidebar-view");
+			//HelloWorld.kill();
+			//HelloWorld.createOrShow(context.extensionUri);
 			
+
 			setTimeout(()=>{
 				vscode.commands.executeCommand("workbench.action.webview.openDeveloperTools");
 			}, 500);
