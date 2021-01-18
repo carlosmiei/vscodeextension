@@ -11,19 +11,15 @@ import HelloWorld from "./HelloWorld.svelte";
      div {
          color: pink;
      }
+     .completed {
+        text-decoration: line-through
+
+     }
  </style>
 <div>Hello</div>
 
 <input />
-<h1>Hello</h1>
-<div>{count}</div>
-<button on:click={()=>{
-    count++
-}}> 
-Increment
-</button>
 
-<input bind:value={text}/>
 <div>{text}</div>
 <button on:click={()=>{
     text="";
@@ -38,6 +34,28 @@ Increment
     <input bind:value={text}/>
 </form>
 
-<pre>
-    {JSON.stringify(todos,null,2)}
-</pre>
+<ul>
+    {#each todos as todo (todo.text)}
+        <li on:click={()=>{
+            todo.completed = !todo.completed
+        }}
+        class:completed = {todo.completed}
+        >{todo.text}</li>    
+    {/each}
+</ul>
+
+<button on:click={()=>{
+            tsvscode.postMessage({
+                type: 'onInfo',
+                value: '🐛  InfoMAF '
+            });
+}}>Click me </button>
+
+<button on:click={()=>{
+    tsvscode.postMessage({
+        type: 'onError',
+        value: '🐛  Error mESSAGE ' 
+    });
+}}>Click me for error </button>
+
+

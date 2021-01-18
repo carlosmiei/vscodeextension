@@ -11,6 +11,7 @@
   ],
   "activationEvents": [
     "onCommand:vstodo.helloWorld",
+    "onCommand:vstodo.addTodo",
     "onCommand:vstodo.AskQuestion",
     "onCommand:vstodo.Refresh",
     "onView:vstodo-sidebar"
@@ -51,6 +52,11 @@
         "command": "vstodo.Refresh",
         "category": "VSTODO",
         "title": "refresh?"
+      },
+      {
+        "command": "vstodo.addTodo",
+        "category": "VSTODO",
+        "title": "addTodo?"
       }
     ]
   },

@@ -46,9 +46,27 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	context.subscriptions.push(
+		vscode.commands.registerCommand("vstodo.addTodo", async ()=> {
+			console.log("Hello");
+			const {activeTextEditor}= vscode.window;
+			;
+
+			if (!activeTextEditor ){
+				return;
+
+			}
+			const text = activeTextEditor.document.getText(activeTextEditor.selection);
+			//console.log(text);
+			vscode.window.showInformationMessage("Text:"+ text);
+
+		})
+	);
+
+	context.subscriptions.push(
 		vscode.commands.registerCommand("vstodo.Refresh", async ()=> {
 			await vscode.commands.executeCommand("workbench.action.closeSidebar");
 			await vscode.commands.executeCommand("workbench.view.extension.vstodo-sidebar-view");
+
 			//HelloWorld.kill();
 			//HelloWorld.createOrShow(context.extensionUri);
 			
