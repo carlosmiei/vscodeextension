@@ -1,4 +1,4 @@
 # vscodeextension
-VSCode extension using Svelter + Node.js
+VSCode extension using Svelte + Node.js
 
 Changed
