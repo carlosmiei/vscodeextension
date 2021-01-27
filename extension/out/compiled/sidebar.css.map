@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "sidebar.css",
+  "sources": [
+    "Sidebar.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">import { onMount } from \"svelte\";\nimport HelloWorld from \"./HelloWorld.svelte\";\nlet todos = [];\nonMount(() => {\n    window.addEventListener('message', event => {\n        const message = event.data; // The json data that the extension sent\n        console.log({ message });\n        switch (message.type) {\n            case 'new-todo':\n                todos = [{ text: message.value, completed: false }, ...todos];\n                break;\n        }\n    });\n});\nlet count = 0;\nlet text = \"\";\n</script>\n\n\n<style>\n     div {\n         color: pink;\n     }\n     .completed {\n        text-decoration: line-through\n\n     }\n </style>\n<div>Hello</div>\n\n<input />\n\n<div>{text}</div>\n<button on:click={()=>{\n    text=\"\";\n}}>RESET</button>\n\n\n<form on:submit|preventDefault={e=>{\n    todos = [{text, completed:false},...todos]\n    text=\"\";\n    //e.preventDefault();\n}}>\n    <input bind:value={text}/>\n</form>\n\n<ul>\n    {#each todos as todo (todo.text)}\n        <li on:click={()=>{\n            todo.completed = !todo.completed\n        }}\n        class:completed = {todo.completed}\n        >{todo.text}</li>    \n    {/each}\n</ul>\n\n<button on:click={()=>{\n            tsvscode.postMessage({\n                type: 'onInfo',\n                value: '🐛  InfoMAF '\n            });\n}}>Click me </button>\n\n<button on:click={()=>{\n    tsvscode.postMessage({\n        type: 'onError',\n        value: '🐛  Error mESSAGE ' \n    });\n}}>Click me for error </button>\n\n\n"
+  ],
+  "names": [],
+  "mappings": "AAoBK,GAAG,cAAC,CAAC,AACD,KAAK,CAAE,IAAI,AACf,CAAC,AACD,UAAU,cAAC,CAAC,AACT,eAAe,CAAE,YAAY;;KAEhC,CAAC"
+}
