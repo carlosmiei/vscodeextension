@@ -36,10 +36,10 @@ const main = async () => {
   ));
 
   app.get('/auth/github',
-    passport.authenticate('github'));
+    passport.authenticate('github', {session: false}));
 
   app.get('/auth/github/callback',
-    passport.authenticate('github'),
+    passport.authenticate('github', {session:false}),
     (_req, res) => {
       // Successful authentication, redirect home.
       //res.redirect('/');
