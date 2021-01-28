@@ -8,3 +8,4 @@ export class User extends BaseEntity {
     @Column('text')
     name:string;
 }
+
